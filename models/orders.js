@@ -97,4 +97,4 @@ const schema = new mongoose.Schema({
   }
 }, { versionKey: false })
 
-export default mongoose.model('order', schema)
+export default mongoose.model('orders', schema)
