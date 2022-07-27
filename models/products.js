@@ -23,7 +23,8 @@ const schema = new mongoose.Schema({
     required: [true, '商品價格為必填']
   },
   image: {
-    type: String
+    type: [String],
+    required: [true, '至少需上傳一張圖片']
   }
 }, { versionKey: false })
 
