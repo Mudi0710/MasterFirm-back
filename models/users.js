@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, '真實姓名為必填'],
     minlength: [2, '真實姓名至少 2 個字以上'],
-    match: [/^[\u4e00-\u9fa5]{2,}$/, '帳號格式錯誤']
+    match: [/^[\u4e00-\u9fa5]{2,}$/, '真實姓名格式錯誤']
   },
   gender: {
     // 0 = 未選擇
@@ -70,11 +70,11 @@ const schema = new mongoose.Schema({
         product: {
           type: mongoose.ObjectId,
           ref: 'products',
-          required: [true, '缺少商品欄位']
+          required: [true, '缺少商品資訊']
         },
         quantity: {
           type: Number,
-          required: [true, '缺少數量欄位']
+          required: [true, '缺少商品數量']
         }
       }
     ]
