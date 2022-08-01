@@ -1,6 +1,6 @@
 import express from 'express'
 import * as auth from '../middleware/auth.js'
-// import content from '../middleware/content.js'
+import content from '../middleware/content.js'
 import {
   register,
   login,
@@ -14,10 +14,8 @@ import {
 
 const router = express.Router()
 
-router.post('/', register)
-router.post('/login', login)
-// router.post('/', content('application/json'), register)
-// router.post('/login', content('application/json'), auth.login, login)
+router.post('/', content('application/json'), register)
+router.post('/login', content('application/json'), auth.login, login)
 router.delete('/logout', auth.jwt, logout)
 router.post('/extend', auth.jwt, extend)
 router.get('/', auth.jwt, getUser)
