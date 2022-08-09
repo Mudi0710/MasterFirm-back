@@ -6,7 +6,7 @@ import {
   login,
   logout,
   extend,
-  getUser,
+  getUser
   // addCart,
   // editCart,
   // getCart
