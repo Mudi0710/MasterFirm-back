@@ -43,11 +43,11 @@ const schema = new mongoose.Schema({
       message: '信箱格式錯誤'
     }
   },
-  phone: {
+  tel: {
     type: String,
     required: [true, '手機號碼為必填'],
-    minlength: [10, '手機號碼為 10 個數字'],
-    maxlength: [10, '手機號碼為 10 個數字'],
+    minlength: [12, '手機號碼為 10 個數字'],
+    maxlength: [12, '手機號碼為 10 個數字'],
     unique: true,
     match: [/^09[0-9]{2}.[0-9]{3}.[0-9]{3}$/, '手機號碼格式錯誤']
   },
