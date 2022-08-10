@@ -14,7 +14,7 @@ export const register = async (req, res) => {
     return res.status(400).send({ success: false, message: '密碼最多 20 個字元' })
   }
   if (!password.match(/^(?=.*[a-z])(?=.*\d)[a-z\d]{4,20}$/)) {
-    return res.status(400).send({ success: false, message: '密碼格式錯誤，須至少包含一個英文小寫及一個數字' })
+    return res.status(400).send({ success: false, message: '格式錯誤，至少包含一個小寫英文及數字' })
   }
   req.body.password = bcrypt.hashSync(password, 10)
   try {
@@ -44,9 +44,9 @@ export const login = async (req, res) => {
       result: {
         token,
         account: req.user.account,
-        email: req.user.email,
-        cart: req.user.cart.length,
-        role: req.user.role
+        name: req.user.name,
+        role: req.user.role,
+        cart: req.user.cart.length
       }
     })
   } catch (error) {
