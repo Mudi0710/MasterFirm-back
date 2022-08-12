@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import './passport/passport.js'
 import userRouter from './routes/users.js'
+import productRouter from './routes/products.js'
 
 mongoose.connect(process.env.DB_URL)
 
@@ -29,6 +30,8 @@ app.use((_, req, res, next) => {
 })
 
 app.use('/users', userRouter)
+app.use('/product', productRouter)
+
 app.all('*', (req, res) => {
   res.status(404).send({ success: false, message: '找不到' })
 })
