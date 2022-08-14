@@ -33,7 +33,7 @@ app.use('/users', userRouter)
 app.use('/product', productRouter)
 
 app.all('*', (req, res) => {
-  res.status(404).send({ success: false, message: '找不到' })
+  res.status(404).send({ success: false, message: '找不到資料' })
 })
 app.listen(process.env.PORT || 4000, () => {
   console.log('Server is running')
