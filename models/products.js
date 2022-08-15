@@ -9,19 +9,17 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, '商品描述為必填']
   },
+  inventory: {
+    // true = 有現貨
+    // false = 需預訂
+    type: Boolean,
+    default: false
+  },
   sell: {
     // true = 上架
     // false = 下架
     type: Boolean,
     default: false
-  },
-  inventory: {
-    type: Number,
-    required: [true, '庫存狀態為必填'],
-    enum: {
-      values: ['有現貨', '需預訂'],
-      message: '庫存狀態錯誤'
-    }
   },
   price: {
     type: Number,
