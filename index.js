@@ -30,7 +30,7 @@ app.use((_, req, res, next) => {
 })
 
 app.use('/users', userRouter)
-app.use('/product', productRouter)
+app.use('/products', productRouter)
 
 app.all('*', (req, res) => {
   res.status(404).send({ success: false, message: '找不到資料' })
