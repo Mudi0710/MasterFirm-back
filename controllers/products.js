@@ -81,3 +81,13 @@ export const editProduct = async (req, res) => {
     }
   }
 }
+
+// 刪除商品，只有管理者能刪除
+export const deleteProduct = async (req, res) => {
+  try {
+    await products.findByIdAndDelete(req.params.id)
+    res.status(200).send({ success: true, message: '' })
+  } catch (error) {
+    res.status(500).send({ success: false, message: '伺服器錯誤' })
+  }
+}
