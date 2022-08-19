@@ -15,6 +15,14 @@ const schema = new mongoose.Schema({
         ref: 'products',
         required: [true, '缺少商品資訊']
       },
+      // productName: {
+      //   type: mongoose.ObjectId,
+      //   required: [true, '缺少商品資訊']
+      // },
+      // productPrice: {
+      //   type: mongoose.ObjectId,
+      //   required: [true, '缺少商品資訊']
+      // },
       quantity: {
         type: Number,
         required: [true, '缺少商品數量']
