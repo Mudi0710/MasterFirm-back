@@ -6,6 +6,7 @@ import {
   login,
   logout,
   extend,
+  getAllUsers,
   getUser,
   addCart,
   editCart,
@@ -18,6 +19,7 @@ router.post('/', content('application/json'), register)
 router.post('/login', content('application/json'), auth.login, login)
 router.delete('/logout', auth.jwt, logout)
 router.post('/extend', auth.jwt, extend)
+router.get('/all', auth.jwt, getAllUsers)
 router.get('/', auth.jwt, getUser)
 router.post('/cart', content('application/json'), auth.jwt, addCart)
 router.patch('/cart', content('application/json'), auth.jwt, editCart)
