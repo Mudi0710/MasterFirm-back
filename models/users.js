@@ -60,6 +60,9 @@ const schema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  avatar: {
+    type: String
+  },
   // 儲存使用者登入的 JWT
   tokens: {
     type: [String]
