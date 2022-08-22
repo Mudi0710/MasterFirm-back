@@ -17,8 +17,18 @@ export const createOrder = async (req, res) => {
     if (!canCheckout) {
       return res.status(400).send({ success: false, message: '訂單包含已下架商品' })
     }
+    // 建立一個儲存購物車按下結帳後，購物清單的(空)陣列
+    const checkOut = []
+    // 將 /models/users.js 裡 user.cart 的東西推進 checkOut 陣列
+    // 因為 passport.js 的 jwt 每次都會 populate({ path: 'cart', populate: { path: 'product' } })
+    // 所以 cart 已經變成陣列 + 物件(指加入購物車的商品)，再也不是只有商品 id 了
+    for (const it of req.user.cart) {
+      checkOut.push({ product: it.product._id, quantity: it.quantity, price: it.product.price })
+    }
+    // console.log(req.user.cart)
     // 如果 購物車長度 > 0，且全部商品都上架，那就建立一個新的 訂單
-    result = await orders.create({ user: req.user._id, products: req.user.cart })
+    result = await orders.create({ user: req.user._id, products: checkOut })
+    // result = await orders.create({ user: req.user._id, products: req.user.cart })
     // 清空購物車
     req.user.cart = []
     // 存檔

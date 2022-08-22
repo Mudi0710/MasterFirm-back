@@ -26,3 +26,18 @@ export const jwt = (req, res, next) => {
     next()
   })(req, res, next)
 }
+
+export const jwtCart = (req, res, next) => {
+  passport.authenticate('jwtCart', { session: false }, (err, data, info) => {
+    if (err || !data) {
+      if (info instanceof jsonwebtoken.JsonWebTokenError) {
+        return res.status(400).send({ success: false, message: '驗證錯誤' })
+      } else {
+        return res.status(400).send({ success: false, message: info.message })
+      }
+    }
+    req.user = data.user
+    req.token = data.token
+    next()
+  })(req, res, next)
+}

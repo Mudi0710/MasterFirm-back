@@ -9,7 +9,7 @@ import {
 
 const router = express.Router()
 
-router.post('/', auth.jwt, createOrder)
+router.post('/', auth.jwtCart, createOrder)
 router.get('/', auth.jwt, getMyOrders)
 router.get('/all', auth.jwt, admin, getAllOrders)
 
