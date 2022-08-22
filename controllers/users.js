@@ -92,8 +92,15 @@ export const getUser = async (req, res) => {
       success: true,
       message: '',
       result: {
+        _id: req.user._id,
         account: req.user.account,
+        name: req.user.name,
+        gender: req.user.gender,
+        birthday: req.user.birthday,
+        tel: req.user.tel,
         email: req.user.email,
+        address: req.user.address,
+        avatar: req.user.avatar,
         cart: req.user.cart.length,
         role: req.user.role
       }
