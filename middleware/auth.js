@@ -13,6 +13,7 @@ export const login = (req, res, next) => {
 }
 
 export const jwt = (req, res, next) => {
+  // console.log('in auth')
   passport.authenticate('jwt', { session: false }, (err, data, info) => {
     if (err || !data) {
       if (info instanceof jsonwebtoken.JsonWebTokenError) {
