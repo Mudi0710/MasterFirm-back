@@ -29,8 +29,7 @@ const schema = new mongoose.Schema({
     default: 0
   },
   birthday: {
-    type: Date,
-    default: 0
+    type: Date
   },
   email: {
     type: String,
