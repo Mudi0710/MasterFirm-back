@@ -7,6 +7,7 @@ import './passport/passport.js'
 import usersRouter from './routes/users.js'
 import productsRouter from './routes/products.js'
 import ordersRouter from './routes/orders.js'
+import sloganRouter from './routes/slogan.js'
 import introductionRouter from './routes/introduction.js'
 import noticeRouter from './routes/notice.js'
 import newsesRouter from './routes/newses.js'
@@ -39,6 +40,7 @@ app.use((_, req, res, next) => {
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
 app.use('/orders', ordersRouter)
+app.use('/slogan', sloganRouter)
 app.use('/introduction', introductionRouter)
 app.use('/notice', noticeRouter)
 app.use('/newses', newsesRouter)
