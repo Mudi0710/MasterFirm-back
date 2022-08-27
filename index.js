@@ -14,6 +14,8 @@ import newsesRouter from './routes/newses.js'
 import knowledgesRouter from './routes/knowledges.js'
 import casesRouter from './routes/cases.js'
 import servicesRouter from './routes/services.js'
+import connectionsRouter from './routes/connections.js'
+import localmapRouter from './routes/localmap.js'
 
 mongoose.connect(process.env.DB_URL)
 
@@ -47,6 +49,8 @@ app.use('/newses', newsesRouter)
 app.use('/knowledges', knowledgesRouter)
 app.use('/cases', casesRouter)
 app.use('/services', servicesRouter)
+app.use('/connections', connectionsRouter)
+app.use('/localmap', localmapRouter)
 
 app.all('*', (req, res) => {
   res.status(404).send({ success: false, message: '找不到資料' })
