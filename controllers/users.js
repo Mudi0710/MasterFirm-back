@@ -110,6 +110,40 @@ export const getUser = async (req, res) => {
   }
 }
 
+// 編輯會員，管理者或使用者本人都可以編輯
+export const editUser = async (req, res) => {
+  try {
+    const data = {
+      name: req.body.name,
+      gender: req.body.gender,
+      birthday: req.body.birthday,
+      tel: req.body.tel,
+      email: req.body.email,
+      address: req.body.address
+    }
+    const result = await users.findByIdAndUpdate(req.params.id, data, { new: true })
+    res.status(200).send({ success: true, message: '', result })
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      const key = Object.keys(error.errors)[0]
+      const message = error.errors[key].message
+      return res.status(400).send({ success: false, message })
+    } else {
+      res.status(500).send({ success: false, message: '伺服器錯誤' })
+    }
+  }
+}
+
+// 刪除會員，只有管理者能刪除
+export const deleteUser = async (req, res) => {
+  try {
+    await users.findByIdAndDelete(req.params.id)
+    res.status(200).send({ success: true, message: '' })
+  } catch (error) {
+    res.status(500).send({ success: false, message: '伺服器錯誤' })
+  }
+}
+
 // 新增商品到購物車
 export const addCart = async (req, res) => {
   try {
