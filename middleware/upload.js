@@ -10,7 +10,7 @@ cloudinary.config({
 
 const upload = multer({
   storage: new CloudinaryStorage({ cloudinary }),
-  fileFilter (req, file, cb) {
+  fileFilter(req, file, cb) {
     if (!file.mimetype.startsWith('image')) {
       cb(new multer.MulterError('LIMIT_FORMAT'), false)
     } else {
@@ -23,7 +23,7 @@ const upload = multer({
 })
 
 export default async (req, res, next) => {
-  upload.array('image', 5)(req, res, async error => {
+  upload.fields([{ name: 'image', maxCount: 5 }])(req, res, async error => {
     if (error instanceof multer.MulterError) {
       let message = '上傳失敗'
       if (error.code === 'LIMIT_FILE_SIZE') {
