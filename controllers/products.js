@@ -68,7 +68,11 @@ export const editProduct = async (req, res) => {
       price: req.body.price
     }
     // 如果 req.file 不是空的
-    if (req.file) data.image = req.file.path
+    if (req.files.image) {
+      data.image = req.files.image?.map(file => {
+        return file.path
+      })
+    }
     const result = await products.findByIdAndUpdate(req.params.id, data, { new: true })
     res.status(200).send({ success: true, message: '', result })
   } catch (error) {
