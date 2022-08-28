@@ -16,6 +16,7 @@ import casesRouter from './routes/cases.js'
 import servicesRouter from './routes/services.js'
 import connectionsRouter from './routes/connections.js'
 import localmapRouter from './routes/localmap.js'
+import carouselsRouter from './routes/carousels.js'
 
 mongoose.connect(process.env.DB_URL)
 
@@ -51,6 +52,7 @@ app.use('/cases', casesRouter)
 app.use('/services', servicesRouter)
 app.use('/connections', connectionsRouter)
 app.use('/localmap', localmapRouter)
+app.use('/carousels', carouselsRouter)
 
 app.all('*', (req, res) => {
   res.status(404).send({ success: false, message: '找不到資料' })
