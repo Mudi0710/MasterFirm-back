@@ -35,6 +35,7 @@ export default async (req, res, next) => {
     } else if (error) {
       res.status(500).send({ success: false, message: '伺服器錯誤' })
     } else {
+      console.log(req.body)
       next()
     }
   })
