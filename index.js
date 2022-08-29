@@ -16,6 +16,7 @@ import casesRouter from './routes/cases.js'
 import servicesRouter from './routes/services.js'
 import connectionsRouter from './routes/connections.js'
 import localmapRouter from './routes/localmap.js'
+import marqueesRouter from './routes/marquees.js'
 import carouselsRouter from './routes/carousels.js'
 
 mongoose.connect(process.env.DB_URL)
@@ -52,6 +53,7 @@ app.use('/cases', casesRouter)
 app.use('/services', servicesRouter)
 app.use('/connections', connectionsRouter)
 app.use('/localmap', localmapRouter)
+app.use('/marquees', marqueesRouter)
 app.use('/carousels', carouselsRouter)
 
 app.all('*', (req, res) => {
