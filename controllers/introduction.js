@@ -7,7 +7,7 @@ export const createIntroduction = async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       // 加上問號(可選串連)是因為：圖片可能沒上傳，所以可能會沒有圖片 => req.file 就會是 undefined，對 undefined 的東西加上 .path 會出現錯誤，所以才加問號讓程式可以忽略並繼續執行
-      image: req.files?.map(file => {
+      image: req.files.image?.map(file => {
         return file.path
       }) || []
     })
@@ -51,7 +51,11 @@ export const editIntroduction = async (req, res) => {
       content: req.body.content
     }
     // 如果 req.file 不是空的
-    if (req.file) data.image = req.file.path
+    if (req.files.image) {
+      data.image = req.files.image?.map(file => {
+        return file.path
+      })
+    }
     const result = await introduction.findByIdAndUpdate(req.params.id, data, { new: true })
     res.status(200).send({ success: true, message: '', result })
   } catch (error) {
