@@ -10,7 +10,7 @@ import {
   getMarquee,
   editMarquee,
   deleteMarquee
-} from '../controllers/Marquees.js'
+} from '../controllers/marquees.js'
 
 const router = express.Router()
 
