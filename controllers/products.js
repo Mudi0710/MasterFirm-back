@@ -10,7 +10,7 @@ export const createProduct = async (req, res) => {
       inventory: req.body.inventory,
       price: req.body.price,
       // 加上問號(可選串連)是因為：圖片可能沒上傳，所以可能會沒有圖片 => req.file 就會是 undefined，對 undefined 的東西加上 .path 會出現錯誤，所以才加問號讓程式可以忽略並繼續執行
-      image: req.files?.map(file => {
+      image: req.files.image?.map(file => {
         return file.path
       }) || []
     })
